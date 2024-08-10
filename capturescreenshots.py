@@ -4,7 +4,7 @@ import os
 import re
 
 # Time interval between screenshots (in seconds)
-interval = 0.2
+interval = 0.1
 
 # Directory to save screenshots
 output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "trainingimgs")
