@@ -3,14 +3,14 @@ import time
 import os
 import re
 
-# Time interval between screenshots (in seconds)
+# time interval between screenshots (in seconds)
 interval = 0.1
 
-# Directory to save screenshots
+# directory to save screenshots
 output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "trainingimgs")
 os.makedirs(output_dir, exist_ok=True)
 
-# Function to find the highest numbered screenshot file
+# function to find the highest numbered screenshot file
 def get_last_screenshot_number(output_dir):
     screenshots = [f for f in os.listdir(output_dir) if re.match(r'screenshot_\d+\.png', f)]
     if not screenshots:
@@ -20,17 +20,16 @@ def get_last_screenshot_number(output_dir):
 
 try:
     print("Starting to take screenshots. Press Ctrl+C to stop.")
-    # Start numbering from the last existing screenshot number + 1
+    # start numbering from the last existing screenshot number + 1
     screenshot_count = get_last_screenshot_number(output_dir) + 1
     with mss.mss() as sct:
         while True:
-            # Capture the screen
             monitor = sct.monitors[1]
             screenshot = sct.grab(monitor)
             screenshot_path = os.path.join(output_dir, f"screenshot_{screenshot_count}.png")
             mss.tools.to_png(screenshot.rgb, screenshot.size, output=screenshot_path)
             screenshot_count += 1
-            # Wait for the specified interval
+
             time.sleep(interval)
 except KeyboardInterrupt:
     print(f"Stopped taking screenshots. {screenshot_count - get_last_screenshot_number(output_dir) - 1} new screenshots taken.")

@@ -3,3 +3,4 @@
 !.gitignore
 !capturescreenshots.py
 !buildmodel.py
+!main.py
