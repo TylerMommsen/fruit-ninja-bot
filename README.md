@@ -38,7 +38,7 @@ This project implements an automated bot using the YOLO object detection model t
 1. **Run the Bot**: Execute the script using Python:
 
    ```bash
-   python bot_script.py
+   python main.py
    ```
 
 2. **Start and Stop**: The bot starts automatically and continues to run until you press the `q` key.
